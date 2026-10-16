@@ -1,0 +1,22 @@
+# Postgres + pgvector for the banking RAG lab.
+# Host port 5436 (5432/5433 are already used on this machine).
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: bankrag-lab-db
+    environment:
+      POSTGRES_USER: bank
+      POSTGRES_PASSWORD: bank
+      POSTGRES_DB: bankrag
+    ports:
+      - "5436:5432"
+    volumes:
+      - bankrag_lab_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bank -d bankrag"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  bankrag_lab_data:
