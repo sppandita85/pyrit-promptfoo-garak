@@ -18,5 +18,22 @@ services:
       timeout: 3s
       retries: 10
 
+  # Web UI for browsing the chunks table: http://localhost:5052 (no login, desktop mode).
+  # The server is pre-registered; enter password "bank" on first connect.
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: bankrag-lab-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+      PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
+    ports:
+      - "5052:80"
+    volumes:
+      - ./pgadmin/servers.json:/pgadmin4/servers.json:ro
+    depends_on:
+      - db
+
 volumes:
   bankrag_lab_data:

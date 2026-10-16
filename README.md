@@ -95,6 +95,12 @@ curl -s localhost:8001/chat -H 'Content-Type: application/json' -H 'X-Guardrails
 
 Response shape: `{"answer": "...", "sources": [{"source", "doc_type", "owner_user_id"}], "guardrails": "on|off", "blocked": false}`
 
+## pgAdmin (browse the database)
+
+`docker compose up -d` also starts pgAdmin at **http://localhost:5052** (no login).
+The server `bankrag-lab-db` is pre-registered (`pgadmin/servers.json`); enter password
+`bank` on first connect, then open Databases > bankrag > Schemas > public > Tables > chunks.
+
 ## Useful commands
 
 ```bash
