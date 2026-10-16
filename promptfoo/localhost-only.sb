@@ -1,0 +1,8 @@
+;; macOS sandbox profile: allow everything EXCEPT network connections that leave
+;; this machine. Used by run.sh to prove Promptfoo only talks to localhost
+;; (the RAG API on :8001 and Ollama on :11434).
+(version 1)
+(allow default)
+(deny network-outbound)
+(allow network-outbound (remote ip "localhost:*"))
+(allow network-outbound (remote unix-socket))

@@ -1,0 +1,8 @@
+{
+  "name": "bankrag-promptfoo",
+  "private": true,
+  "description": "Promptfoo evals and red team for the banking RAG lab (Stage 2)",
+  "devDependencies": {
+    "promptfoo": "0.124.1"
+  }
+}
